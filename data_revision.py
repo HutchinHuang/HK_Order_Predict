@@ -20,7 +20,7 @@ def collect_certain_weather(year_num, month_num, date_num):
     # Data_Collection
     date = latest_list[0].get_text().strip()
     date = date[:4] + '-' + date[5:7] + '-' + date[8:10]
-    print(date)
+    print('Got the weather of {0} Successfully. Yep! '.format(date))
     weather = latest_list[1].get_text()
     temp = latest_list[2].get_text()
     wind = latest_list[3].get_text().strip().replace(' ', '')
@@ -39,7 +39,7 @@ def collect_certain_weather(year_num, month_num, date_num):
         sunny_or_not = 0
 
     weekday_num = int(datetime.datetime(int(date[:4]), int(date[5:7]), int(date[8:10])).strftime("%w"))
-    print(weekday_num)
+    # print(weekday_num)
     if weekday_num == 6 or weekday_num == 0:
         weekend_or_not = 1
     else:
@@ -57,7 +57,7 @@ def collect_certain_weather(year_num, month_num, date_num):
     else:
         breeze_or_not = 0
 
-    return [date, weekend_or_not, free_or_not, part_free_or_not, high_temp, low_temp, sunny_or_not, rainy_or_not, breeze_or_not]
+    return [int(date[:4] + date[5:7] + date[8:10]), weekend_or_not, free_or_not, part_free_or_not, high_temp, low_temp, sunny_or_not, rainy_or_not, breeze_or_not]
 
 
 if __name__ == '__main__':
